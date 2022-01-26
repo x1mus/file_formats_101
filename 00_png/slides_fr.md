@@ -1,7 +1,7 @@
 %title: File formats 101
 %author: x1mus
 
--> # File formats 101 - PNG : INTRO <-
+-> # PNG - Introduction <-
 
 <br>
 
@@ -9,7 +9,9 @@
 <br>
 - **Portable Networks Graphics**
 <br>
-- *"lossless"*
+- lossless, portable, well-compressed, bitmapped image (définition de chaque pixel)
+<br>
+- indexed-color, grayscale, truecolor
 <br>
 - Norme ISO/IEC 15948:2004
 <br>
@@ -17,19 +19,30 @@
 
 <br>
 
-## D'autres types de fichiers images:
+## Un objectif - Remplacer le format GIF:
 <br>
-- BMP --> Premier type d'images qui ont vu le jour
+- Ce qu'avait GIF :
 <br>
-- JPEG --> Utilisés pour les photographies couleurs (ou n'importe quelle image contenant beaucoup de tonalité ou de dégradés)
+	- 256 couleurs
+	- Accessible
+	- Affichage progressif
+	- Gestion de l'opacité / transparence
+	- Informations auxiliaires
+	- Indépendant de l'architecture
+	- Efficace avec une compression à 100% lossless
 <br>
-- GIF --> Utilisée principalement pour du text, du dessin de lignes, des captures d'écrans, des cartoons et animations
+- Ce qu'ajoute PNG:
 <br>
-- PNG --> Un de meilleur format pour l'utilisation sur le web
+	- Couleurs jusqu'à 48 bits/pixel
+	- Nuances de gris jusqu'à 16 bits/pixel
+	- Canal *alpha* complet
+	- Information gamma
+	- Fiable (détection de corruption)
+	- Affichage progressif + rapide
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : GLOBAL STRUCTURE <-
+-> # PNG - Structure globale <-
 <br>
 
 - Utilisation de chunks (contenant diverses informations)
@@ -55,42 +68,42 @@
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : CHUNK'S STRUCTURE <-
+-> # PNG - CHUNK'S STRUCTURE <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : LETTERS <-
+-> # PNG - LETTERS <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : IHDR <-
+-> # PNG - IHDR <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : IDAT <-
+-> # PNG - IDAT <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : IEND <-
+-> # PNG - IEND <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # File formats 101 - PNG : OTHER CHUNKS <-
+-> # PNG - OTHER CHUNKS <-
 <br>
 
 oui
