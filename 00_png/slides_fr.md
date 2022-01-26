@@ -42,6 +42,49 @@
 
 ------------------------------------------------------------
 
+-> # PNG - Représentation des données <-
+
+<br>
+1. **Entiers et ordres des octets** --> Entier non-signé (MSB first)
+
+<br>
+2. **Valeur des couleurs** --> Nuances de gris ou triplet RGB
+
+<br>
+3. **Disposition d'une image** --> Tableau rectangulaire de pixels
+	<br>
+	- Chaque pixel apparait de gauche à droite dans une "scanline"
+	- Chaque scanline apparait de haut en bas
+	<br>
+	- Taille pixel : bit-depth (nombre de bits par sample)
+	<br>
+	- Il existe 3 types de pixels différents:
+		1. [Indexed-color](https://www.pcmag.com/encyclopedia/term/indexed-color) : 1 sample (index vers une palette)
+		2. Grayscale : 1 sample (niveau de gris)
+		3. Truecolor : 3 samples (rgb)
+	<br>
+	- De plus, "grayscale" et "truecolor" peuvent inclure un canal alpha
+
+<br>
+4. **Canal alpha** --> Représente la transparence d'un pixel
+	- Une autre façon de gérer la transparence ? le chunk tRNS
+
+<br>
+5. **Filtrage** --> Permet d'améliorer la compression future d'une image
+
+<br>
+6. **Entrelacement** --> Permet l'affichage d'une image de manière progressive
+	- Méthode 0 : Stocker de manière séquentielle
+	- Méthode 1 : Algorithme Adam7
+
+<br>
+7. **Correction gamma** --> Chunk gAMA, ajout de données afin d'obtenir un résultat se rapprochant le + possible de la réalité
+
+<br>
+8. **Chaînes de caractères** --> Possibilité d'ajout de texte (latin-1)
+
+------------------------------------------------------------
+
 -> # PNG - Structure globale <-
 <br>
 
@@ -68,42 +111,35 @@
 
 ------------------------------------------------------------
 
--> # PNG - CHUNK'S STRUCTURE <-
+-> # PNG - Structure d'un chunk <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # PNG - LETTERS <-
+-> # PNG - Compression <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # PNG - IHDR <-
+-> # PNG - Algorithmes de filtrage <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # PNG - IDAT <-
+-> # PNG - Règles sur l'ordre des chunks <-
 <br>
 
 oui
 
 ------------------------------------------------------------
 
--> # PNG - IEND <-
-<br>
-
-oui
-
-------------------------------------------------------------
-
--> # PNG - OTHER CHUNKS <-
+-> # PNG - Informations complémentaires <-
 <br>
 
 oui
