@@ -252,7 +252,15 @@ Même algorithme utilisé dans les fichiers zip, zlib, ...
 -> # PNG - Algorithmes de filtrage <-
 <br>
 
-oui
+Comme indiqué précédemment, seul la méthode de filtrage 0 est définie par le standard PNG.
+Cette méthode contient 5 type de filtres :
+1. None --> Les données ne sont pas modifiées
+2. Sub --> Différence entre chaque pixel et son prédécesseur (donc à gauche)
+3. Up --> Différence entre chaque pixel et le pixel exactement au dessus
+4. Average --> Différence entre chaque pixel et la moyenne entre : le pixel exactement au dessus et le prédécesseur
+5. Paeth --> Basé sur une fonction linéaire prenant en paramètre les 3 pixels en haut à gauche du pixel (gauche, dessus, diagonale gauche dessus)
+
+Chaque filtre est effectué sur base d'une suite d'octets présent dans chaque scanline.
 
 ------------------------------------------------------------
 
@@ -271,4 +279,4 @@ oui
 ------------------------------------------------------------
 
 
-TO-DO algo : CRC / compression method / filter method / adam7
+TO-DO algo : CRC
