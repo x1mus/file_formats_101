@@ -253,11 +253,29 @@ Même algorithme utilisé dans les fichiers zip, zlib, ...
 <br>
 
 Comme indiqué précédemment, seul la méthode de filtrage 0 est définie par le standard PNG.
-Cette méthode contient 5 type de filtres :
-1. None --> Les données ne sont pas modifiées
-2. Sub --> Différence entre chaque pixel et son prédécesseur (donc à gauche)
-3. Up --> Différence entre chaque pixel et le pixel exactement au dessus
-4. Average --> Différence entre chaque pixel et la moyenne entre : le pixel exactement au dessus et le prédécesseur
-5. Paeth --> Basé sur une fonction linéaire prenant en paramètre les 3 pixels en haut à gauche du pixel (gauche, dessus, diagonale gauche dessus)
 
+<br>
+Cette méthode contient 5 type de filtres :
+<br>
+1. *None* --> Les données ne sont pas modifiées
+<br>
+2. *Sub* --> Différence entre chaque pixel et son prédécesseur (donc à gauche)
+<br>
+3. *Up* --> Différence entre chaque pixel et le pixel exactement au dessus
+<br>
+4. *Average* --> Différence entre chaque pixel et la moyenne entre : le pixel exactement au dessus et le prédécesseur
+<br>
+5. *Paeth* --> Basé sur une fonction linéaire prenant en paramètre les 3 pixels en haut à gauche du pixel (gauche, dessus, diagonale gauche dessus)
+
+<br>
 Chaque filtre est effectué sur base d'une suite d'octets présent dans chaque scanline.
+
+------------------------------------------------------------
+
+-> # PNG - Conclusion <-
+<br>
+
+- Principalement du texte
+- Pas un format complexe
+- Plein de moyen de cacher de l'information !
+- Un exemple ?
