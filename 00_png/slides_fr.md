@@ -7,7 +7,7 @@
 
 ## Qu'est ce qu'un fichier PNG ?
 <br>
-- **Portable Networks Graphics**
+- *Portable Networks Graphics*
 <br>
 - lossless, portable, well-compressed, bitmapped image (définition de chaque pixel)
 <br>
@@ -45,13 +45,13 @@
 -> # PNG - Représentation des données <-
 
 <br>
-1. **Entiers et ordres des octets** --> Entier non-signé (MSB first)
+1. *Entiers et ordres des octets* --> Entier non-signé (MSB first)
 
 <br>
-2. **Valeur des couleurs** --> Nuances de gris ou triplet RGB
+2. *Valeur des couleurs* --> Nuances de gris ou triplet RGB
 
 <br>
-3. **Disposition d'une image** --> Tableau rectangulaire de pixels
+3. *Disposition d'une image* --> Tableau rectangulaire de pixels
 	<br>
 	- Chaque pixel apparait de gauche à droite dans une "scanline"
 	- Chaque scanline apparait de haut en bas
@@ -66,30 +66,31 @@
 	- De plus, "grayscale" et "truecolor" peuvent inclure un canal alpha
 
 <br>
-4. **Canal alpha** --> Représente la transparence d'un pixel
+4. *Canal alpha* --> Représente la transparence d'un pixel
 	- Une autre façon de gérer la transparence ? le chunk tRNS
 
 <br>
-5. **Filtrage** --> Permet d'améliorer la compression future d'une image
+5. *Filtrage* --> Permet d'améliorer la compression future d'une image
 
 <br>
-6. **Entrelacement** --> Permet l'affichage d'une image de manière progressive
+6. *Entrelacement* --> Permet l'affichage d'une image de manière progressive
 	- Méthode 0 : Stocker de manière séquentielle
 	- Méthode 1 : Algorithme Adam7
 
 <br>
-7. **Correction gamma** --> Chunk gAMA, ajout de données afin d'obtenir un résultat se rapprochant le + possible de la réalité
+7. *Correction gamma* --> Chunk gAMA, ajout de données afin d'obtenir un résultat se rapprochant le + possible de la réalité
 
 <br>
-8. **Chaînes de caractères** --> Possibilité d'ajout de texte (latin-1)
+8. *Chaînes de caractères* --> Possibilité d'ajout de texte (latin-1)
 
 ------------------------------------------------------------
 
 -> # PNG - Structure globale <-
-<br>
 
+<br>
 - Utilisation de chunks (contenant diverses informations)
-- Le PNG le plus simple possible ne contient que **3** chunks \!
+- Le PNG le plus simple possible ne contient que *3* chunks \!
+- Ajout de chunks supplémentaires possible (auxiliaire/critique)
 <br>
 
 ┌────────────────┐
@@ -112,6 +113,62 @@
 ------------------------------------------------------------
 
 -> # PNG - Structure d'un chunk <-
+
+<br>
+Un chunk est composé de 4 champs distincts
+<br>
+
+┌────────┬──────┬──────┬─────┐
+│ LENGTH │ TYPE │ DATA │ CRC │
+└────────┴──────┴──────┴─────┘
+
+<br>
+- _Longueur :_ 4 octets non-signé - Se réfère à la longueur du champ "data"
+<br>
+- _Type :_ 4 octets - Code de 4 lettres ASCII (maj/min)
+<br>
+- _Data :_ Données liées au chunk (peut être 0)
+<br>
+- _CRC :_ 4 octets - Calculé sur le type + data
+
+<br>
+Le type d'un chunk est soumis a des conventions de nommage afin de garantir de la flexibilité, évolutivité, ...
+
+<br>
+1. *Première lettre* --> Majuscule = Critique / Minuscule = Auxiliaire
+	- _Intuition :_ Nécéssité du chunk
+
+<br>
+2. *Deuxième lettre* --> Majusucule = Publique / Minuscule = Privé
+	- _Intuition :_ Défini dans le standard ou défini par le public
+
+<br>
+3. *Troisième lettre* --> Majusucule = Norme / Minuscule = Expansion future
+	- _Intuition :_ Tout le temps en majuscule actuellement
+
+<br>
+4. *Quatrième lettre* --> Majusucule = Copie non sûr / Minuscule = Copie sûr
+	- _Intuition :_ Le chunk est-il dépendant des données de l'image ?
+
+<br>
+```
+bLOb  <-- 32 bit chunk type code represented in text form
+||||
+|||+- Safe-to-copy bit is 1 (lower case letter; bit 5 is 1)
+||+-- Reserved bit is 0     (upper case letter; bit 5 is 0)
+|+--- Private bit is 0      (upper case letter; bit 5 is 0)
++---- Ancillary bit is 1    (lower case letter; bit 5 is 1)
+.
+Therefore, this name represents an ancillary, public, safe-to-copy chunk.
+```
+
+<br>
+Le CRC est calculé selon la méthode standard, en utilisant ce polynôme :
+`x^32+x^26+x^23+x^22+x^16+x^12+x^11+x^10+x^8+x^7+x^5+x^4+x^2+x+1`
+
+------------------------------------------------------------
+
+-> # PNG - Caractéristiques de chunks <-
 <br>
 
 oui
@@ -140,6 +197,14 @@ oui
 ------------------------------------------------------------
 
 -> # PNG - Informations complémentaires <-
+<br>
+
+oui
+
+------------------------------------------------------------
+
+
+-> # PNG - CRC - Cycle Redundancy Check <-
 <br>
 
 oui
