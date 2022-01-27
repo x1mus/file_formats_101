@@ -171,11 +171,76 @@ Le CRC est calculé selon la méthode standard, en utilisant ce polynôme :
 -> # PNG - Caractéristiques de chunks <-
 <br>
 
-oui
+_1. Chunks critiques_
+	<br>
+	- *IHDR (Image HeaDeR)*
+		<br>
+		- Width (4) --> Largeur de l'image en pixels
+		<br>
+		- Height (4) --> Hauteur de l'image en pixels
+		<br>
+		- Bit depth (1) --> Représente le nombre de bits/sample (1, 2, 4, 8 ou 16)
+		<br>
+		- Color type (1) --> Inteprétation de l'image (truecolor / grayscale / plte / ...)
+		<br>
+		- Compression method (1) --> Comment est effécutée la compression ("deflate/inflate compression with a 32K sliding window)
+		<br>
+		- Filter method (1) --> Quelle méthode de filtrage est utilisée avant la compression ("adaptive filtering with five basic filter types")
+		<br>
+		- Interlace method (1) --> Entrelacement utilisé (no / adam7)
+	<br>
+	- *PLTE (PaLeTtE)*
+		<br>
+		- Pallette de couleur avec 256 entrées (couleurs les + utilisées)
+		<br>
+		- Chaque entrée est une combinaison de RGB
+	<br>
+	- *IDAT (Image DATa)*
+		<br>
+		- Contient les données de l'image (pixels)
+		<br>
+		- Afin d'obtenir les données dans les chunks, il faudra (pour chaque scanline):
+		`1. Filtrer les données`
+		`2. Compresser celles-ci `
+		<br>
+		- Retrouver les données : inverser le processus
+	<br>
+	- *IEND (Image END/trailer)*
+		<br>
+		- Marque la fin du fichier PNG
+		<br>
+		- Ne contient pas de données
+
+<br>
+_2. Chunks auxiliaires_
+	<br>
+	- *bKGD (Background color)* --> Spécifie une couleur de fond par défaut
+	<br>
+	- *cHRM (Primary chromaticities and white point)*
+	<br>
+	- *gAMA (Image gamma)* --> Spécifier la luminosté de la photo afin de respecter au mieux le scénario réel
+	<br>
+	- *hIST (Image histogram)* --> Approximation de la fréquence d'utilisation d'un couleur dans une palette
+	<br>
+	- *pHYs (Physical pixel dimension)* --> Spécifie la dimension physique d'un pixel/ratio d'affichage
+	<br>
+	- *sBIT (Significant bits)*
+	<br>
+	- *tEXt (Textual data)* --> Informations supplémentaires
+	<br>
+	- *tIME (Image last-modification time)*
+	<br>
+	- *tRNS (Transparency)* --> Indication de l'utilisation de la transparence
+	<br>
+	- *zTXT (Compressed textual data)* --> Pareil que tEXt mais compressé
+	<br>
+
+<br>
+_3. D'autres chunks peuvent être créé et ajouté au standard s'ils sont prouvés utiles/essentiels._
 
 ------------------------------------------------------------
 
--> # PNG - Compression <-
+-> # PNG - Deflate/inflate compression <-
 <br>
 
 oui
@@ -204,9 +269,4 @@ oui
 ------------------------------------------------------------
 
 
--> # PNG - CRC - Cycle Redundancy Check <-
-<br>
-
-oui
-
-------------------------------------------------------------
+TO-DO algo : CRC / compression method / filter method / adam7
