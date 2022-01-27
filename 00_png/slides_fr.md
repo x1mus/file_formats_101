@@ -129,7 +129,7 @@ Un chunk est composé de 4 champs distincts
 <br>
 - _Data :_ Données liées au chunk (peut être 0)
 <br>
-- _CRC :_ 4 octets - Calculé sur le type + data
+- _CRC :_ 4 octets - Calculé sur le type + data ["How does CRC work ?"](https://www.youtube.com/watch?v=izG7qT0EpBw) [Implémentation python]()
 
 <br>
 Le type d'un chunk est soumis a des conventions de nommage afin de garantir de la flexibilité, évolutivité, ...
@@ -261,22 +261,3 @@ Cette méthode contient 5 type de filtres :
 5. Paeth --> Basé sur une fonction linéaire prenant en paramètre les 3 pixels en haut à gauche du pixel (gauche, dessus, diagonale gauche dessus)
 
 Chaque filtre est effectué sur base d'une suite d'octets présent dans chaque scanline.
-
-------------------------------------------------------------
-
--> # PNG - Règles sur l'ordre des chunks <-
-<br>
-
-oui
-
-------------------------------------------------------------
-
--> # PNG - Informations complémentaires <-
-<br>
-
-oui
-
-------------------------------------------------------------
-
-
-TO-DO algo : CRC
