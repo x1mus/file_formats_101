@@ -243,7 +243,9 @@ _3. D'autres chunks peuvent être créé et ajouté au standard s'ils sont prouv
 -> # PNG - Deflate/inflate compression <-
 <br>
 
-oui
+Même algorithme utilisé dans les fichiers zip, zlib, ...
+- Un seul flux compressé peut être séparés entre plusieurs chunk IDAT
+- Si vous souhaitez plus de détails : [RFC-1951](https://datatracker.ietf.org/doc/html/rfc1951)
 
 ------------------------------------------------------------
 
