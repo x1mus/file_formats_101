@@ -129,7 +129,7 @@ Un chunk est composé de 4 champs distincts
 <br>
 - _Data :_ Données liées au chunk (peut être 0)
 <br>
-- _CRC :_ 4 octets - Calculé sur le type + data ["How does CRC work ?"](https://www.youtube.com/watch?v=izG7qT0EpBw) [Implémentation python]()
+- _CRC :_ 4 octets - Calculé sur le type + data ["How does CRC work ?"](https://www.youtube.com/watch?v=izG7qT0EpBw) [Implémentation python](https://www.github.com/x1mus/file_formats_101/tree/main/00_png/crc32.py)
 
 <br>
 Le type d'un chunk est soumis a des conventions de nommage afin de garantir de la flexibilité, évolutivité, ...
